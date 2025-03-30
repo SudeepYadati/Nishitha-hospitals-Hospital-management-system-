@@ -1,0 +1,11 @@
+﻿@model BillingModel
+
+<h2>Delete Bill</h2>
+
+<p>Are you sure you want to delete this bill for <strong>@Model.Patient?.Name</strong>?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="BillId" />
+    <button @Url.Action("Delete","Billing",new{id=Model.BillId}) type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,27 @@
+﻿@model BillingModel
+
+<h2>Generate Bill</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Patient</label>
+        <select asp-for="PatientId" class="form-control" asp-items="@(new SelectList((List<PatientModel>)ViewData["Patients"], "PatientId", "Name"))">
+            <option value="">Select a Patient</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Total Amount</label>
+        <input asp-for="TotalAmount" class="form-control" type="number" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Payment Status</label>
+        <select asp-for="PaymentStatus" class="form-control">
+            <option value="PAID">PAID</option>
+            <option value="UNPAID">UNPAID</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate Bill</button>
+</form>

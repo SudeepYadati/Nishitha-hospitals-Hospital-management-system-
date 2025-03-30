@@ -1,0 +1,39 @@
+﻿@model AppointmentModel
+
+<h2>Schedule an Appointment</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Patient</label>
+        <select asp-for="PatientId" class="form-control" asp-items="@(new SelectList((List<PatientModel>)ViewData["Patients"], "PatientId", "Name"))">
+            <option value="">Select a Patient</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Doctor</label>
+        <select asp-for="DoctorId" class="form-control" asp-items="@(new SelectList((List<DoctorModel>)ViewData["Doctors"], "DoctorId", "Name"))">
+            <option value="">Select a Doctor</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Appointment Date</label>
+        <input asp-for="AppointmentDate" type="date" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Time Slot</label>
+        <input asp-for="TimeSlot" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="CONFIRMED">CONFIRMED</option>
+            <option value="CANCELLED">CANCELLED</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+</form>

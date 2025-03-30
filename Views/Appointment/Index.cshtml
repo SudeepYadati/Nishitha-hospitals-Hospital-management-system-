@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AppointmentModel>
+
+<h2>Appointments List</h2>
+
+<!-- Search Form -->
+<form method="get">
+    <input type="text" name="searchString" placeholder="Search by patient name..." class="form-control w-25 d-inline" />
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a asp-action="Index" class="btn btn-secondary">Reset</a>
+</form>
+
+<a asp-action="Create" class="btn btn-success my-3">Schedule Appointment</a>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Appointment Date</th>
+            <th>Time Slot</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@(appointment.Patient?.Name ?? "N/A")</td>
+                <td>@(appointment.Doctor?.Name ?? "N/A")</td>
+                <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                <td>@appointment.TimeSlot</td>
+                <td>@appointment.Status</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@appointment.AppointmentId" class="btn btn-info btn-sm">View</a>
+                    <a asp-action="Edit" asp-route-id="@appointment.AppointmentId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@appointment.AppointmentId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

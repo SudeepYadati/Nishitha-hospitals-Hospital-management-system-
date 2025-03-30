@@ -1,0 +1,15 @@
+﻿@model AppointmentModel
+
+<h2>Appointment Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Appointment for @Model.Patient?.Name</h4>
+        <p><strong>Doctor:</strong> @Model.Doctor?.Name</p>
+        <p><strong>Appointment Date:</strong> @Model.AppointmentDate.ToShortDateString()</p>
+        <p><strong>Time Slot:</strong> @Model.TimeSlot</p>
+        <p><strong>Status:</strong> @Model.Status</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

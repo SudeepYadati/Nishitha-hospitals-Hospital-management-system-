@@ -1,0 +1,14 @@
+﻿@model BillingModel
+
+<h2>Bill Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Bill for @Model.Patient?.Name</h4>
+        <p><strong>Total Amount:</strong> @Model.TotalAmount</p>
+        <p><strong>Payment Status:</strong> @Model.PaymentStatus</p>
+        <p><strong>Bill Date:</strong> @Model.BillDate.ToShortDateString()</p>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
